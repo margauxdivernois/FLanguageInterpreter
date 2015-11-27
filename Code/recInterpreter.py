@@ -3,8 +3,8 @@ from AST import addToClass
 from functools import reduce
 
 operations = {
-    '+' : lambda x,y : x+y,
-    '-' : lambda x,y : x-y,
+    'plus' : lambda x,y : x+y,
+    'moins' : lambda x,y : x-y,
     '*' : lambda x,y : x*y,
     '/' : lambda x,y : x/y,
 }

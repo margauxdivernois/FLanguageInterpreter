@@ -65,12 +65,12 @@ def t_newline(t):
 
 
 def t_CROCHET_OPEN(t):
-    r'['
+    r'\['
     return t
 
 
 def t_CROCHET_CLOSE(t):
-    r']'
+    r'\]'
     return t
 
 
@@ -86,7 +86,7 @@ lex.lex()
 
 if __name__ == "__main__":
     import sys
-    # prog = open(sys.argv[1]).read()
+    #prog = open(sys.argv[1]).read()
     prog = open("test.txt").read()
     lex.input(prog)
 
