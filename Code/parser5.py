@@ -4,13 +4,6 @@ import ply.yacc as yacc
 import AST
 from lex5 import tokens
 
-operations = {
-	'+' : lambda x,y: x+y,
-	'-' : lambda x,y: x-y,
-	'*' : lambda x,y: x*y,
-	'/' : lambda x,y: x/y,
-}
-
 def p_programme_statement(p):
         """ programme : statement """
         p[0] = AST.ProgramNode(p[1])
@@ -26,7 +19,7 @@ def p_statement(p):
 	p[0] = p[1]
 
 def p_structure(p):
-        """structure : WHILE expression ACCOLADE_OPEN programme ACCOLADE_CLOSE"""
+        """structure : WHILE expression CROCHET_OPEN programme CROCHET_CLOSE"""
         p[0] = AST.WhileNode([p[2],p[4]]);
 
 def p_printExpression(p):

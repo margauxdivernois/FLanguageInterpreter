@@ -11,11 +11,12 @@ tokens = (
 	'NUMBER',
 	'ADD_OP',
 	'MUL_OP',
-        'ENDOFLINE',
-        'ACCOLADE_OPEN',
-        'ACCOLADE_CLOSE',
-        'AFFECTATION',
-        'VARIABLE') + tuple(map(lambda s : s.upper(), reserved_words))
+	'ENDOFLINE',
+	'CROCHET_OPEN',
+    'CROCHET_CLOSE',
+	'AFFECTATION',
+	'VARIABLE'
+) + tuple(map(lambda s : s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
 literals = '()'
@@ -55,15 +56,19 @@ def t_newline(t):
 	r'\n+'
 	t.lexer.lineno += len(t.value)
 
-def t_ACCOLADE_OPEN(t):
-        r'{'
-        return t
 
-def t_ACCOLADE_CLOSE(t):
-        r'}'
-        return t
+def t_CROCHET_OPEN(t):
+    r'['
+    return t
 
-t_ignore  = ' \t'
+
+def t_CROCHET_CLOSE(t):
+    r']'
+    return t
+
+
+t_ignore = ' \t'
+
 
 def t_error(t):
 	print ("Illegal character '%s'" % t.value[0])
