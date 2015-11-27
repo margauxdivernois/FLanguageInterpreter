@@ -1,0 +1,4 @@
+Répète pour i vaut 0 jusqu'à 10 par pas de 5:
+[ 
+Affiche ^Bonjour^~
+]
