@@ -4,7 +4,8 @@ import ply.lex as lex
 
 reserved_words = (
         'while',
-        'print'
+        'print',
+        'par'
 )
 
 tokens = (
@@ -25,7 +26,7 @@ def t_ADD_OP(t):
 	return t
 	
 def t_MUL_OP(t):
-	r'\*|/'
+	r'\multiplié|divisé'
 	return t
 
 def t_NUMBER(t):

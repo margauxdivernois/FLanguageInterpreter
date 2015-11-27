@@ -4,13 +4,6 @@ import ply.yacc as yacc
 import AST
 from lex5 import tokens
 
-operations = {
-	'+' : lambda x,y: x+y,
-	'-' : lambda x,y: x-y,
-	'*' : lambda x,y: x*y,
-	'/' : lambda x,y: x/y,
-}
-
 def p_programme_statement(p):
         """ programme : statement """
         p[0] = AST.ProgramNode(p[1])
@@ -41,10 +34,13 @@ def p_expression_variable(p):
         """expression : VARIABLE"""
         p[0] = AST.TokenNode(p[1])
         
-def p_expression_op(p):
-	"""expression : expression ADD_OP expression
-			| expression MUL_OP expression"""
+def p_expression_opAdd(p):
+	"""expression : expression ADD_OP expression"""
 	p[0] = AST.OpNode(p[2],[p[1],p[3]])
+
+def p_expression_opMul(p):
+	"""expression : expression MUL_OP PAR expression"""
+	p[0] = AST.OpNode(p[2],[p[1],p[4]])
 	
 def p_expression_num(p):
 	"""expression : NUMBER"""

@@ -3,10 +3,10 @@ from AST import addToClass
 from functools import reduce
 
 operations = {
-    '+' : lambda x,y : x+y,
-    '-' : lambda x,y : x-y,
-    '*' : lambda x,y : x*y,
-    '/' : lambda x,y : x/y,
+    'plus' : lambda x,y : x+y,
+    'moins' : lambda x,y : x-y,
+    'multiplié' : lambda x,y : x*y,
+    'divisé' : lambda x,y : x/y,
 }
 
 vars = {}
