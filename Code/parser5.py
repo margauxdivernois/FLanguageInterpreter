@@ -34,7 +34,7 @@ def p_printExpression(p):
         p[0] = AST.PrintNode(p[2])
 
 def p_expression_affectation(p):
-        """affectation : VARIABLE EQUAL expression"""
+        """affectation : VARIABLE AFFECTATION expression"""
         p[0] = AST.AssignNode([AST.TokenNode(p[1]),p[3]])
 
 def p_expression_variable(p):

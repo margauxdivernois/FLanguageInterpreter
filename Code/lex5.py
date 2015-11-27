@@ -14,7 +14,7 @@ tokens = (
         'ENDOFLINE',
         'ACCOLADE_OPEN',
         'ACCOLADE_CLOSE',
-        'EQUAL',
+        'AFFECTATION',
         'VARIABLE'
 ) + tuple(map(lambda s : s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
@@ -42,8 +42,8 @@ def t_ENDOFLINE(t):
         r'~'
         return t
 
-def t_EQUAL(t):
-        r'='
+def t_AFFECTATION(t):
+        r'vaut'
         return t
 
 def t_VARIABLE(t):
