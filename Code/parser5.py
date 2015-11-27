@@ -16,7 +16,7 @@ def p_programme_statement(p):
         p[0] = AST.ProgramNode(p[1])
 
 def p_programme_recursive(p):
-        """ programme : statement P_VIRGULE programme"""
+        """ programme : statement ENDOFLINE programme"""
         p[0] = AST.ProgramNode([p[1]]+p[3].children)
 
 def p_statement(p):
