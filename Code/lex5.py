@@ -11,7 +11,7 @@ tokens = (
 	'NUMBER',
 	'ADD_OP',
 	'MUL_OP',
-	'P_VIRGULE',
+	'ENDOFLINE',
 	'ACCOLADE_OPEN',
 	'ACCOLADE_CLOSE',
 	'EQUAL',
@@ -38,8 +38,8 @@ def t_NUMBER(t):
 		t.value = 0
 	return t
 
-def t_P_VIRGULE(t):
-        r';'
+def t_ENDOFLINE(t):
+        r'~'
         return t
 
 def t_EQUAL(t):
