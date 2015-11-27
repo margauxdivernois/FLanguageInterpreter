@@ -11,18 +11,18 @@ tokens = (
 	'NUMBER',
 	'ADD_OP',
 	'MUL_OP',
-        'P_VIRGULE',
-        'ACCOLADE_OPEN',
-        'ACCOLADE_CLOSE',
-        'EQUAL',
-        'VARIABLE'
+	'P_VIRGULE',
+	'ACCOLADE_OPEN',
+	'ACCOLADE_CLOSE',
+	'EQUAL',
+	'VARIABLE'
 ) + tuple(map(lambda s : s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
 literals = '()'
 
 def t_ADD_OP(t):
-	r'\+|-'
+	r'\plus|moins'
 	return t
 	
 def t_MUL_OP(t):
