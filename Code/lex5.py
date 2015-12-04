@@ -1,11 +1,15 @@
-# Avec les parentheses
+#Avec les parentheses
 
 import ply.lex as lex
 
 reserved_words = (
     'while',
     'Affiche',
-    'par'
+    'par',
+    'de',
+    'est',
+    'a',
+    'ou'
 )
 
 tokens = (
@@ -17,6 +21,10 @@ tokens = (
             'CROCHET_CLOSE',
             'AFFECTATION',
             'VARIABLE',
+            'SUPERIEUR',
+            'INFERIEUR',
+            'EGAL',
+            'DIFFERENT',
             'STRING',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
@@ -47,6 +55,22 @@ def t_ENDOFLINE(t):
 
 def t_AFFECTATION(t):
     r'vaut'
+    return t
+
+def t_SUPERIEUR(t):
+    r'superieur'
+    return t
+
+def t_INFERIEUR(t):
+    r'\inferieur'
+    return t
+
+def t_EGAL(t):
+    r'egal'
+    return t
+
+def t_DIFFERENT(t):
+    r'different'
     return t
 
 def t_VARIABLE(t):

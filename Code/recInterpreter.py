@@ -7,6 +7,13 @@ operations = {
     'moins' : lambda x,y : x-y,
     'multiplié' : lambda x,y : x*y,
     'divisé' : lambda x,y : x/y,
+    'inferieur' : lambda x,y : x<y,
+    'superieur' : lambda x,y : x>y,
+    'different' : lambda x,y : x!=y,
+    'egal' : lambda x,y : x==y,
+    'superieuregal' : lambda x,y : x>=y,
+    'inferieuregal' : lambda x,y : x<=y,
+
 }
 
 vars = {}
