@@ -56,6 +56,11 @@ def execute(self):
     while self.children[0].execute() != 0 :
         self.children[1].execute()
 
+@addToClass(AST.SiNode)
+def execute(self):
+    if self.children[0].execute():
+        self.children[1].execute()
+
 if __name__ == "__main__":
 
     from parser5 import parse

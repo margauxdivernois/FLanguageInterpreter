@@ -123,6 +123,9 @@ class PrintNode(Node):
     
 class WhileNode(Node):
     type = 'while'
+
+class SiNode(Node):
+    type = 'si'
     
 class EntryNode(Node):
     type = 'ENTRY'

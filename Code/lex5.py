@@ -9,7 +9,8 @@ reserved_words = (
     'de',
     'est',
     'a',
-    'ou'
+    'ou',
+    'alors',
 )
 
 tokens = (
@@ -26,11 +27,11 @@ tokens = (
             'EGAL',
             'DIFFERENT',
             'STRING',
+            'SI',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
-literals = '()'
-
+literals = '():'
 
 def t_ADD_OP(t):
     r'\plus|moins'
@@ -51,6 +52,10 @@ def t_NUMBER(t):
 
 def t_ENDOFLINE(t):
     r'~'
+    return t
+
+def t_SI(t):
+    r'si'
     return t
 
 def t_AFFECTATION(t):
