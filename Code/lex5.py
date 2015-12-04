@@ -17,6 +17,7 @@ tokens = (
             'CROCHET_CLOSE',
             'AFFECTATION',
             'VARIABLE',
+            'STRING',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
@@ -64,6 +65,10 @@ def t_CROCHET_OPEN(t):
 
 def t_CROCHET_CLOSE(t):
     r'\]'
+    return t
+
+def t_STRING(t):
+    r'\^.*\^'
     return t
 
 t_ignore = ' \t'

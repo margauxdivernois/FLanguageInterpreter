@@ -22,7 +22,11 @@ def execute(self):
         try:
             return vars[self.tok]
         except KeyError:
-            print ("*** ERROR: variable %s undefined!" %self.tok)
+            if self.tok[0] != '^':
+               print ("*** ERROR: variable %s undefined!" %self.tok)
+            else:
+                ##p[1][1:-1] car on enlève les ^ de début et de fin [1:-1]
+                self.tok = self.tok[1:-1]
     return self.tok
 
 @addToClass(AST.OpNode)

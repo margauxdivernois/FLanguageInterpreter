@@ -18,29 +18,27 @@ def p_statement(p):
     """ statement : affectation
         | structure
         | printExpression"""
-
     p[0] = p[1]
-
 
 def p_structure(p):
     """structure : WHILE expression CROCHET_OPEN programme CROCHET_CLOSE"""
     p[0] = AST.WhileNode([p[2], p[4]]);
 
-
 def p_printExpression(p):
     """ printExpression : AFFICHE expression"""
     p[0] = AST.PrintNode(p[2])
-
 
 def p_expression_affectation(p):
     """affectation : VARIABLE AFFECTATION expression"""
     p[0] = AST.AssignNode([AST.TokenNode(p[1]), p[3]])
 
-
 def p_expression_variable(p):
     """expression : VARIABLE"""
     p[0] = AST.TokenNode(p[1])
 
+def p_expression_string(p):
+    """expression : STRING"""
+    p[0] = AST.TokenNode(p[1])
 
 def p_expression_opAdd(p):
     """expression : expression ADD_OP expression"""
@@ -54,11 +52,9 @@ def p_expression_num(p):
     """expression : NUMBER"""
     p[0] = AST.TokenNode(p[1])
 
-
 def p_expression_paren(p):
     """expression : '(' expression ')' """
     p[0] = p[2]
-
 
 def p_minus(p):
     """expression : ADD_OP expression %prec UMINUS"""
@@ -76,7 +72,7 @@ def parse(program):
 precedence = (
     ('left', 'ADD_OP'),
     ('left', 'MUL_OP'),
-    ('right', 'UMINUS'),
+    ('right', 'UMINUS')
 )
 
 yacc.yacc(outputdir='generated')
@@ -88,8 +84,8 @@ if __name__ == "__main__":
 	result = yacc.parse(prog)
 	print(result)
 
-	import os
-	graph = result.makegraphicaltree()
-	name = os.path.splitext("test.txt")[0]+'-ast.pdf'
-	graph.write_pdf(name)
-	print("Wrote AST to", name)
+	#import os
+	#graph = result.makegraphicaltree()
+	#name = os.path.splitext("test.txt")[0]+'-ast.pdf'
+	#graph.write_pdf(name)
+	#print("Wrote AST to", name)
