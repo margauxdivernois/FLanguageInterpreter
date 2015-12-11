@@ -1,4 +1,4 @@
-# Avec les parentheses
+#Avec les parentheses
 # -*- coding: utf-8 -*-
 
 import ply.lex as lex
@@ -7,10 +7,13 @@ reserved_words = (
     'while',
     'Affiche',
     'par',
-    'pour',
-    'pas',
-    'de'
-)
+	'de',
+	'est',
+	'a',
+	'ou',
+	'alors',
+	'pour',
+	'pas')
 
 tokens = (
             'NUMBER',
@@ -21,14 +24,17 @@ tokens = (
             'CROCHET_CLOSE',
             'AFFECTATION',
             'VARIABLE',
+            'SUPERIEUR',
+            'INFERIEUR',
+            'EGAL',
+            'DIFFERENT',
             'STRING',
-            'FOR',
-            'TO',
+			'FOR',
+			'TO',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
-literals = '()'
-
+literals = '():'
 
 def t_ADD_OP(t):
     r'\plus|moins'
@@ -50,6 +56,10 @@ def t_ENDOFLINE(t):
     r'~'
     return t
 
+def t_SI(t):
+    r'si'
+    return t
+
 def t_AFFECTATION(t):
     r'vaut'
     return t
@@ -58,6 +68,21 @@ def t_FOR(t):
     r'Répéte'
     return t
 
+def t_SUPERIEUR(t):
+    r'superieur'
+    return t
+
+def t_INFERIEUR(t):
+    r'\inferieur'
+    return t
+
+def t_EGAL(t):
+    r'egal'
+    return t
+
+def t_DIFFERENT(t):
+    r'different'
+    return t
 def t_VARIABLE(t):
     r'[A-Za-z_]\w*'
     if t.value in reserved_words:

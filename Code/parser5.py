@@ -20,8 +20,43 @@ def p_statement(p):
     p[0] = p[1]
 
 def p_structure(p):
+    """structure : """
+
+def p_expression_egal(p):
+    """expression : expression EST EGAL A expression"""
+    p[0] = AST.OpNode(p[3],[p[1],p[5]])
+
+def p_expression_different(p):
+    """expression : expression EST DIFFERENT DE expression"""
+    p[0] = AST.OpNode(p[3],[p[1],p[5]])
+
+def p_expression_superieur(p):
+    """expression : expression EST SUPERIEUR A expression"""
+    p[0] = AST.OpNode(p[3],[p[1],p[5]])
+
+def p_expression_inferieur(p):
+    """expression : expression EST INFERIEUR A expression"""
+    p[0] = AST.OpNode(p[3],[p[1],p[5]])
+
+def p_expression_inferieuregal(p):
+    """expression : expression EST INFERIEUR OU EGAL A expression"""
+    p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
+
+def p_expression_superieuregal(p):
+    """expression : expression EST SUPERIEUR OU EGAL A expression"""
+    p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
+
+def p_structure_while(p):
     """structure : WHILE expression CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.WhileNode([p[2], p[4]]);
+    p[0] = AST.WhileNode([p[2], p[4]])
+
+def p_structure_si(p):
+    """structure : SI expression ALORS ':' CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.SiNode([p[2], p[6]])
+
+def p_expression_condition(p):
+    """expression : """
+    p[0] = AST.TokenNode(p[1])
 
 def p_printExpression(p):
     """ printExpression : AFFICHE expression"""
@@ -84,14 +119,14 @@ precedence = (
 yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":
-	import sys
-	prog = open("test.txt").read()
-	#prog = open(sys.argv[1]).read()
-	result = yacc.parse(prog)
-	print(result)
+    import sys
+    prog = open("test.txt").read()
+    #prog = open(sys.argv[1]).read()
+    result = yacc.parse(prog)
+    print(result)
 
-	#import os
-	#graph = result.makegraphicaltree()
-	#name = os.path.splitext("test.txt")[0]+'-ast.pdf'
-	#graph.write_pdf(name)
-	#print("Wrote AST to", name)
+    import os
+    graph = result.makegraphicaltree()
+    name = os.path.splitext("test.txt")[0]+'-ast.pdf'
+    graph.write_pdf(name)
+    print("Wrote AST to", name)

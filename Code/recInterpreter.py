@@ -8,6 +8,13 @@ operations = {
     'moins' : lambda x,y : x-y,
     'multiplié' : lambda x,y : x*y,
     'divisé' : lambda x,y : x/y,
+    'inferieur' : lambda x,y : x<y,
+    'superieur' : lambda x,y : x>y,
+    'different' : lambda x,y : x!=y,
+    'egal' : lambda x,y : x==y,
+    'superieuregal' : lambda x,y : x>=y,
+    'inferieuregal' : lambda x,y : x<=y,
+
 }
 
 vars = {}
@@ -54,6 +61,11 @@ def execute(self):
     while self.children[0].execute() != 0 :
         self.children[1].execute()
 
+@addToClass(AST.SiNode)
+def execute(self):
+    if self.children[0].execute():
+        self.children[1].execute()
+
 @addToClass(AST.ForNode)
 def execute(self):
     self.children[0].execute()
@@ -62,9 +74,7 @@ def execute(self):
     step = self.children[2].execute()
     for i in range(start, stop, step):
         vars[self.children[0].children[0].tok] = i
-        self.children[3].execute()
-
-if __name__ == "__main__":
+        self.children[3].execute()if __name__ == "__main__":
 
     from parser5 import parse
     import sys
