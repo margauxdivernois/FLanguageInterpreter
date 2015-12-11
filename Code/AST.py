@@ -117,12 +117,15 @@ class OpNode(Node):
     
 class AssignNode(Node):
     type = '='
-    
+
 class PrintNode(Node):
     type = 'print'
     
 class WhileNode(Node):
     type = 'while'
+
+class ForNode(Node):
+    type = 'for'  
     
 class EntryNode(Node):
     type = 'ENTRY'

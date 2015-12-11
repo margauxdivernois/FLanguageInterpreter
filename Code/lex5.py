@@ -1,11 +1,15 @@
 # Avec les parentheses
+# -*- coding: utf-8 -*-
 
 import ply.lex as lex
 
 reserved_words = (
     'while',
     'Affiche',
-    'par'
+    'par',
+    'pour',
+    'pas',
+    'de'
 )
 
 tokens = (
@@ -18,6 +22,8 @@ tokens = (
             'AFFECTATION',
             'VARIABLE',
             'STRING',
+            'FOR',
+            'TO',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
@@ -33,12 +39,11 @@ def t_MUL_OP(t):
     return t
 
 def t_NUMBER(t):
-    r'\d+(\.\d+)?'
+    r'\d+[. ,]\d+|\d+'
     try:
+        t.value = int(t.value)
+    except:
         t.value = float(t.value)
-    except ValueError:
-        print("Line %d: Problem while parsing %s!" % (t.lineno, t.value))
-        t.value = 0
     return t
 
 def t_ENDOFLINE(t):
@@ -47,6 +52,10 @@ def t_ENDOFLINE(t):
 
 def t_AFFECTATION(t):
     r'vaut'
+    return t
+
+def t_FOR(t):
+    r'Répéte'
     return t
 
 def t_VARIABLE(t):
@@ -69,6 +78,10 @@ def t_CROCHET_CLOSE(t):
 
 def t_STRING(t):
     r'\^.*\^'
+    return t
+
+def t_TO(t):
+    r'à'
     return t
 
 t_ignore = ' \t'

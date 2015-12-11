@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import AST
 from AST import addToClass
 from functools import reduce
@@ -24,9 +25,6 @@ def execute(self):
         except KeyError:
             if self.tok[0] != '^':
                print ("*** ERROR: variable %s undefined!" %self.tok)
-            else:
-                ##p[1][1:-1] car on enlève les ^ de début et de fin [1:-1]
-                self.tok = self.tok[1:-1]
     return self.tok
 
 @addToClass(AST.OpNode)
@@ -42,12 +40,29 @@ def execute(self):
 
 @addToClass(AST.PrintNode)
 def execute(self):
-    print(self.children[0].execute())
+    result = self.children[0].execute()
+    try :
+        if result[0] == '^':
+            ##result[1:-1] car on enlève les ^ de début et de fin [1:-1]
+            result = result[1:-1]
+    except Exception:
+        pass              
+    print(result)
 
 @addToClass(AST.WhileNode)
 def execute(self):
     while self.children[0].execute() != 0 :
         self.children[1].execute()
+
+@addToClass(AST.ForNode)
+def execute(self):
+    self.children[0].execute()
+    start = vars[self.children[0].children[0].tok].execute()
+    stop = self.children[1].execute()
+    step = self.children[2].execute()
+    for i in range(start, stop, step):
+        vars[self.children[0].children[0].tok] = i
+        self.children[3].execute()
 
 if __name__ == "__main__":
 

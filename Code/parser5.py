@@ -1,4 +1,5 @@
 # avec parentheses et "moins unaire"
+# -*- coding: utf-8 -*-
 
 import ply.yacc as yacc
 import AST
@@ -8,11 +9,9 @@ def p_programme_statement(p):
     """ programme : statement """
     p[0] = AST.ProgramNode(p[1])
 
-
 def p_programme_recursive(p):
     """ programme : statement ENDOFLINE programme"""
     p[0] = AST.ProgramNode([p[1]] + p[3].children)
-
 
 def p_statement(p):
     """ statement : affectation
@@ -49,7 +48,11 @@ def p_expression_opMul(p):
     p[0] = AST.OpNode(p[2],[p[1],p[4]])
 
 def p_expression_num(p):
-    """expression : NUMBER"""
+    """expression : number"""
+    p[0] = AST.TokenNode(p[1])
+
+def p_number(p):
+    """number : NUMBER"""
     p[0] = AST.TokenNode(p[1])
 
 def p_expression_paren(p):
@@ -60,7 +63,10 @@ def p_minus(p):
     """expression : ADD_OP expression %prec UMINUS"""
     p[0] = AST.OpNode(p[1], [p[2]])
 
-
+def p_for(p):
+    """structure : FOR POUR affectation TO number PAR PAS DE number CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.ForNode([p[3], p[5], p[9], p[11]]);
+    
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)
     yacc.yacc().errok()
