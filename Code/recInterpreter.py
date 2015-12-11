@@ -45,6 +45,7 @@ def execute(self):
 def execute(self):
     vars[self.children[0].tok] = self.children[1].execute()
 
+
 @addToClass(AST.PrintNode)
 def execute(self):
     result = self.children[0].execute()
