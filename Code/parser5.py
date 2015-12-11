@@ -67,7 +67,11 @@ def p_expression_affectation(p):
     p[0] = AST.AssignNode([AST.TokenNode(p[1]), p[3]])
 
 def p_expression_variable(p):
-    """expression : VARIABLE"""
+    """expression : variable"""
+    p[0] = AST.TokenNode(p[1])
+
+def p_variable(p):
+    """variable : VARIABLE"""
     p[0] = AST.TokenNode(p[1])
 
 def p_expression_string(p):
@@ -99,8 +103,8 @@ def p_minus(p):
     p[0] = AST.OpNode(p[1], [p[2]])
 
 def p_for(p):
-    """structure : FOR POUR affectation TO number PAR PAS DE number CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.ForNode([p[3], p[5], p[9], p[11]]);
+    """structure : FOR POUR variable DE number TO number PAR PAS DE number CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.ForNode([p[3], p[5], p[7], p[11], p[13]]);
     
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)

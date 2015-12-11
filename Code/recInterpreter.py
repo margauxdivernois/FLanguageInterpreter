@@ -68,13 +68,15 @@ def execute(self):
 
 @addToClass(AST.ForNode)
 def execute(self):
-    self.children[0].execute()
-    start = vars[self.children[0].children[0].tok].execute()
-    stop = self.children[1].execute()
-    step = self.children[2].execute()
+    vars[self.children[0]] = self.children[1].tok
+    start = self.children[1].tok
+    stop = self.children[2].execute()
+    step = self.children[3].execute()
     for i in range(start, stop, step):
-        vars[self.children[0].children[0].tok] = i
-        self.children[3].execute()if __name__ == "__main__":
+        vars[self.children[0]] = i
+        self.children[4].execute()
+
+if __name__ == "__main__":
 
     from parser5 import parse
     import sys

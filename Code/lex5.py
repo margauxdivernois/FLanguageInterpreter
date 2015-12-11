@@ -7,13 +7,13 @@ reserved_words = (
     'while',
     'Affiche',
     'par',
-	'de',
-	'est',
-	'a',
-	'ou',
-	'alors',
-	'pour',
-	'pas')
+    'de',
+    'est',
+    'a',
+    'ou',
+    'alors',
+    'pour',
+    'pas')
 
 tokens = (
             'NUMBER',
@@ -29,8 +29,9 @@ tokens = (
             'EGAL',
             'DIFFERENT',
             'STRING',
-			'FOR',
-			'TO',
+            'FOR',
+            'TO',
+            'SI',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
