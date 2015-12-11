@@ -85,7 +85,11 @@ def p_minus(p):
 
 def p_for(p):
     """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.ForNode(AST.TokenNode(p[3]), TokenNode(p[5]), TokenNode(p[7]), TokenNode(p[11]), p[13]);
+    p[0] = AST.ForNode([AST.TokenNode(p[3]),
+                       AST.TokenNode(p[5]),
+                       AST.TokenNode(p[7]),
+                       AST.TokenNode(p[11]),
+                       p[13]]);
     
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)
@@ -110,8 +114,8 @@ if __name__ == "__main__":
     result = yacc.parse(prog)
     print(result)
 
-    import os
-    graph = result.makegraphicaltree()
-    name = os.path.splitext("test.txt")[0]+'-ast.pdf'
-    graph.write_pdf(name)
-    print("Wrote AST to", name)
+    #import os
+    #graph = result.makegraphicaltree()
+    #name = os.path.splitext("test.txt")[0]+'-ast.pdf'
+    #graph.write_pdf(name)
+    #print("Wrote AST to", name)
