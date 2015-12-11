@@ -85,7 +85,7 @@ def p_minus(p):
 
 def p_for(p):
     """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.ForNode([AST.TokenNode(p[3]),
+    p[0] = AST.ForNode([p[3],
                        AST.TokenNode(p[5]),
                        AST.TokenNode(p[7]),
                        AST.TokenNode(p[11]),
