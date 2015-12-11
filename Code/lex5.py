@@ -4,6 +4,7 @@
 import ply.lex as lex
 
 reserved_words = (
+    'Si',
     'Tant',
     'Affiche',
     'par',
@@ -31,8 +32,7 @@ tokens = (
             'DIFFERENT',
             'STRING',
             'FOR',
-            'TO',
-            'SI',
+            'TO'
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
@@ -56,10 +56,6 @@ def t_NUMBER(t):
 
 def t_ENDOFLINE(t):
     r'~'
-    return t
-
-def t_SI(t):
-    r'si'
     return t
 
 def t_AFFECTATION(t):

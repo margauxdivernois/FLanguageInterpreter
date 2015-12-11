@@ -22,28 +22,21 @@ def p_statement(p):
 def p_structure(p):
     """structure : """
 
-def p_expression_egal(p):
-    """expression : expression EST EGAL A expression"""
+def p_expression_bool(p):
+    """expression : expression_boolSimple
+                    | expression_boolCombined """
+    p[0] = p[1]
+    
+def p_expression_boolsimple(p):
+    """expression_boolSimple : expression EST DIFFERENT DE expression
+                    | expression EST EGAL A expression
+                    | expression EST SUPERIEUR A expression
+                    | expression EST INFERIEUR A expression"""
     p[0] = AST.OpNode(p[3],[p[1],p[5]])
 
-def p_expression_different(p):
-    """expression : expression EST DIFFERENT DE expression"""
-    p[0] = AST.OpNode(p[3],[p[1],p[5]])
-
-def p_expression_superieur(p):
-    """expression : expression EST SUPERIEUR A expression"""
-    p[0] = AST.OpNode(p[3],[p[1],p[5]])
-
-def p_expression_inferieur(p):
-    """expression : expression EST INFERIEUR A expression"""
-    p[0] = AST.OpNode(p[3],[p[1],p[5]])
-
-def p_expression_inferieuregal(p):
-    """expression : expression EST INFERIEUR OU EGAL A expression"""
-    p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
-
-def p_expression_superieuregal(p):
-    """expression : expression EST SUPERIEUR OU EGAL A expression"""
+def p_expression_boolcombined(p):
+    """expression_boolCombined : expression EST INFERIEUR OU EGAL A expression
+                    | expression EST SUPERIEUR OU EGAL A expression"""
     p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
 
 def p_structure_while(p):
@@ -52,7 +45,7 @@ def p_structure_while(p):
 
 def p_structure_si(p):
     """structure : SI expression ALORS ':' CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.SiNode([p[2], p4[6]])
+    p[0] = AST.SiNode([p[2], p[6]])
 
 def p_printExpression(p):
     """ printExpression : AFFICHE expression"""
