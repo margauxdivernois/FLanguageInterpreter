@@ -58,7 +58,7 @@ def execute(self):
 
 @addToClass(AST.WhileNode)
 def execute(self):
-    while self.children[0].execute() != 0 :
+    while self.children[0].execute() :
         self.children[1].execute()
 
 @addToClass(AST.SiNode)

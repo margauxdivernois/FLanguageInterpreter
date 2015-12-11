@@ -47,16 +47,12 @@ def p_expression_superieuregal(p):
     p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
 
 def p_structure_while(p):
-    """structure : WHILE expression CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.WhileNode([p[2], p[4]])
+    """structure : TANT QUE expression CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.WhileNode([p[3], p[5]])
 
 def p_structure_si(p):
     """structure : SI expression ALORS ':' CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.SiNode([p[2], p[6]])
-
-def p_expression_condition(p):
-    """expression : """
-    p[0] = AST.TokenNode(p[1])
+    p[0] = AST.SiNode([p[2], p4[6]])
 
 def p_printExpression(p):
     """ printExpression : AFFICHE expression"""
@@ -67,11 +63,7 @@ def p_expression_affectation(p):
     p[0] = AST.AssignNode([AST.TokenNode(p[1]), p[3]])
 
 def p_expression_variable(p):
-    """expression : variable"""
-    p[0] = AST.TokenNode(p[1])
-
-def p_variable(p):
-    """variable : VARIABLE"""
+    """expression : VARIABLE"""
     p[0] = AST.TokenNode(p[1])
 
 def p_expression_string(p):
@@ -87,11 +79,7 @@ def p_expression_opMul(p):
     p[0] = AST.OpNode(p[2],[p[1],p[4]])
 
 def p_expression_num(p):
-    """expression : number"""
-    p[0] = AST.TokenNode(p[1])
-
-def p_number(p):
-    """number : NUMBER"""
+    """expression : NUMBER"""
     p[0] = AST.TokenNode(p[1])
 
 def p_expression_paren(p):
@@ -103,13 +91,13 @@ def p_minus(p):
     p[0] = AST.OpNode(p[1], [p[2]])
 
 def p_for(p):
-    """structure : FOR POUR variable DE number TO number PAR PAS DE number CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.ForNode([p[3], p[5], p[7], p[11], p[13]]);
+    """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.ForNode(AST.TokenNode(p[3]), TokenNode(p[5]), TokenNode(p[7]), TokenNode(p[11]), p[13]);
     
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)
+    print(p)
     yacc.yacc().errok()
-
 
 def parse(program):
     return yacc.parse(program)

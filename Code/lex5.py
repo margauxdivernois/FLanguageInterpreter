@@ -4,7 +4,7 @@
 import ply.lex as lex
 
 reserved_words = (
-    'while',
+    'Tant',
     'Affiche',
     'par',
     'de',
@@ -13,7 +13,8 @@ reserved_words = (
     'ou',
     'alors',
     'pour',
-    'pas')
+    'pas',
+    'que',)
 
 tokens = (
             'NUMBER',
@@ -66,7 +67,7 @@ def t_AFFECTATION(t):
     return t
 
 def t_FOR(t):
-    r'Répéte'
+    r'Répète'
     return t
 
 def t_SUPERIEUR(t):
@@ -84,6 +85,7 @@ def t_EGAL(t):
 def t_DIFFERENT(t):
     r'different'
     return t
+
 def t_VARIABLE(t):
     r'[A-Za-z_]\w*'
     if t.value in reserved_words:
