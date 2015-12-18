@@ -2,6 +2,7 @@
 import AST
 from AST import addToClass
 from functools import reduce
+import sys
 
 operations = {
     'plus' : lambda x,y : x+y,
@@ -30,7 +31,8 @@ def execute(self):
             return vars[self.tok]
         except KeyError:
             if self.tok[0] != '^':
-               print ("*** ERROR: variable %s undefined!" %self.tok)
+               print ("*** ERROR: VARIABLE %s IS UNDEFINED!" %self.tok)
+               sys.exit(1) 
     return self.tok
 
 @addToClass(AST.OpNode)
@@ -84,6 +86,7 @@ def execute(self):
     indice = self.children[1].execute()
     if len(vars[self.children[0].tok]) < indice+1:
         print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+        sys.exit(1)        
     else:
         vars[self.children[0].tok][indice] = self.children[2].execute()
 
@@ -92,6 +95,7 @@ def execute(self):
     indice = self.children[1].execute()
     if len(vars[self.children[0].tok]) < indice+1:
         print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+        sys.exit(1)
     else:
         return vars[self.children[0].tok][indice]
 
@@ -99,7 +103,6 @@ def execute(self):
 if __name__ == "__main__":
 
     from parser5 import parse
-    import sys
 
     #fileName = sys.argv[1]
     fileName = "test.txt"
