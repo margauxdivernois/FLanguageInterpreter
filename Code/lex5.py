@@ -36,7 +36,8 @@ tokens = (
             'STRING',
             'FOR',
             'TO',
-            'LA'
+            'LA',
+            'COMMENT',
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
@@ -114,6 +115,10 @@ def t_STRING(t):
 
 def t_TO(t):
     r'à'
+    return t
+
+def t_COMMENT(t):
+    r'\#'
     return t
 
 t_ignore = ' \t'

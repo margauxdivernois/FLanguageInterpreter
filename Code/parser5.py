@@ -6,7 +6,7 @@ import AST
 from lex5 import tokens
 
 def p_programme_statement(p):
-    """ programme : statement """
+    """ programme : statement"""
     p[0] = AST.ProgramNode(p[1])
 
 def p_programme_recursive(p):
@@ -103,6 +103,11 @@ def p_affectTable(p):
     """structure : LA CASE NUMBER DE VARIABLE AFFECTATION NUMBER"""
     p[0] = AST.AffectTableNode([AST.TokenNode(p[5]),AST.TokenNode(p[3]),AST.TokenNode(p[7])])
 
+def p_comment(p):
+    """statement : COMMENT statement
+                   | COMMENT expression"""
+    p[0] = AST.CommentNode(p[2])
+    
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)
     print(p)

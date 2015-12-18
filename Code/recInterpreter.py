@@ -107,13 +107,17 @@ def execute(self):
         print ("*** ERROR: TABLE %s IS UNDEFINED!" %self.children[0].tok)
         sys.exit(1)
 
+@addToClass(AST.CommentNode)
+def execute(self):
+    #DO NOTHING
+    pass
     
 if __name__ == "__main__":
 
     from parser5 import parse
 
     #fileName = sys.argv[1]
-    fileName = "Exemples/for.txt"
+    fileName = "test.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 
