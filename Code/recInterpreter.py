@@ -84,20 +84,28 @@ def execute(self):
 @addToClass(AST.AffectTableNode)
 def execute(self):
     indice = self.children[1].execute()
-    if len(vars[self.children[0].tok]) < indice+1:
-        print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
-        sys.exit(1)        
-    else:
-        vars[self.children[0].tok][indice] = self.children[2].execute()
+    try:
+        if len(vars[self.children[0].tok]) < indice+1:
+            print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+            sys.exit(1)        
+        else:
+            vars[self.children[0].tok][indice] = self.children[2].execute()
+    except KeyError:
+        print ("*** ERROR: TABLE %s IS UNDEFINED!" %self.children[0].tok)
+        sys.exit(1)
 
 @addToClass(AST.GetValueAtNode)
 def execute(self):
     indice = self.children[1].execute()
-    if len(vars[self.children[0].tok]) < indice+1:
-        print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+    try:
+        if len(vars[self.children[0].tok]) < indice+1:
+            print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+            sys.exit(1)
+        else:
+            return vars[self.children[0].tok][indice]
+    except KeyError:
+        print ("*** ERROR: TABLE %s IS UNDEFINED!" %self.children[0].tok)
         sys.exit(1)
-    else:
-        return vars[self.children[0].tok][indice]
 
     
 if __name__ == "__main__":
