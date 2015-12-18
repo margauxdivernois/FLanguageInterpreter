@@ -85,6 +85,13 @@ def execute(self):
 def execute(self):
     indice = self.children[1].execute()
     try:
+        indice = int(indice.tok)
+    except ValueError:
+        try:
+            indice = vars[indice.tok]
+        except:
+            indice = indice
+    try:
         if len(vars[self.children[0].tok]) < indice+1:
             print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
             sys.exit(1)        
@@ -97,6 +104,13 @@ def execute(self):
 @addToClass(AST.GetValueAtNode)
 def execute(self):
     indice = self.children[1].execute()
+    try:
+        indice = int(indice.tok)
+    except ValueError:
+        try:
+            indice = vars[indice.tok]
+        except:
+            indice = indice
     try:
         if len(vars[self.children[0].tok]) < indice+1:
             print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
@@ -113,7 +127,7 @@ if __name__ == "__main__":
     from parser5 import parse
 
     #fileName = sys.argv[1]
-    fileName = "Exemples/for.txt"
+    fileName = "Exemples/hello.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 

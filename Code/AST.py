@@ -102,6 +102,23 @@ class TokenNode(Node):
         
     def __repr__(self):
         return repr(self.tok)
+
+class TableNode(Node):
+    def __init__(self, name, size):
+        Node.__init__(self)
+        self.name = name
+        self.size = size
+    def __repr__(self):
+        return repr(self.name)
+
+class CaseNode(Node):
+    def __init__(self, name, index):
+        Node.__init__(self)
+        self.name = name
+        self.index = index
+    def __repr__(self):
+        return repr(self.name)
+
     
 class OpNode(Node):
     def __init__(self, op, children):
