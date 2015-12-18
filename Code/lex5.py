@@ -19,8 +19,6 @@ reserved_words = (
     'tableau',
     'un',
     'taille',
-    'La',
-    'la',
     'case')
 
 tokens = (
@@ -38,7 +36,8 @@ tokens = (
             'DIFFERENT',
             'STRING',
             'FOR',
-            'TO'
+            'TO',
+            'LA'
          ) + tuple(map(lambda s: s.upper(), reserved_words))
 ### AJOUTE LES ELEMENTS DE reserved_words
 
@@ -86,6 +85,10 @@ def t_EGAL(t):
 
 def t_DIFFERENT(t):
     r'différent'
+    return t
+
+def t_LA(t):
+    r'\La|la'
     return t
 
 def t_VARIABLE(t):

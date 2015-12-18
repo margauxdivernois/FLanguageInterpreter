@@ -86,8 +86,16 @@ def execute(self):
         print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
     else:
         vars[self.children[0].tok][indice] = self.children[2].execute()
-    print(vars)
 
+@addToClass(AST.GetValueAtNode)
+def execute(self):
+    indice = self.children[1].execute()
+    if len(vars[self.children[0].tok]) < indice+1:
+        print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+    else:
+        return vars[self.children[0].tok][indice]
+
+    
 if __name__ == "__main__":
 
     from parser5 import parse

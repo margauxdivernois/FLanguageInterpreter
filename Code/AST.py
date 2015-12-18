@@ -139,7 +139,10 @@ class CreateTableNode(Node):
     type = 'CREATETABLE'
 
 class AffectTableNode(Node):
-    type = 'AFFECTTABLE'
+    type = 'AFFECT TABLE'
+
+class GetValueAtNode(Node):
+    type = 'GET VALUE FROM TABLE AT'
     
     
 def addToClass(cls):
