@@ -75,6 +75,19 @@ def execute(self):
         vars[self.children[0]] = i
         self.children[4].execute()
 
+@addToClass(AST.CreateTableNode)
+def execute(self):
+    vars[self.children[0].tok] = [None] * self.children[1].execute()
+
+@addToClass(AST.AffectTableNode)
+def execute(self):
+    indice = self.children[1].execute()
+    if len(vars[self.children[0].tok]) < indice+1:
+        print ("*** ERROR: CASE %s OUT OF RANGE !" %indice)
+    else:
+        vars[self.children[0].tok][indice] = self.children[2].execute()
+    print(vars)
+
 if __name__ == "__main__":
 
     from parser5 import parse

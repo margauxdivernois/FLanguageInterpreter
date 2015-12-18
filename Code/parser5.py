@@ -20,7 +20,7 @@ def p_statement(p):
     p[0] = p[1]
 
 def p_structure(p):
-    """structure : """
+    """structure :  """
 
 def p_expression_bool(p):
     """expression : expression_boolSimple
@@ -46,6 +46,14 @@ def p_structure_while(p):
 def p_structure_si(p):
     """structure : SI expression ALORS ':' CROCHET_OPEN programme CROCHET_CLOSE"""
     p[0] = AST.SiNode([p[2], p[6]])
+
+def p_for(p):
+    """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
+    p[0] = AST.ForNode([p[3],
+                       AST.TokenNode(p[5]),
+                       AST.TokenNode(p[7]),
+                       AST.TokenNode(p[11]),
+                       p[13]]);
 
 def p_printExpression(p):
     """ printExpression : AFFICHE expression"""
@@ -83,13 +91,13 @@ def p_minus(p):
     """expression : ADD_OP expression %prec UMINUS"""
     p[0] = AST.OpNode(p[1], [p[2]])
 
-def p_for(p):
-    """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
-    p[0] = AST.ForNode([p[3],
-                       AST.TokenNode(p[5]),
-                       AST.TokenNode(p[7]),
-                       AST.TokenNode(p[11]),
-                       p[13]]);
+def p_createTable(p):
+    """structure : VARIABLE EST UN TABLEAU DE TAILLE NUMBER"""
+    p[0] = AST.CreateTableNode([AST.TokenNode(p[1]),AST.TokenNode(p[7])])
+
+def p_affectTable(p):
+    """structure : LA CASE NUMBER DE VARIABLE AFFECTATION NUMBER"""
+    p[0] = AST.AffectTableNode([AST.TokenNode(p[5]),AST.TokenNode(p[3]),AST.TokenNode(p[7])])
     
 def p_error(p):
     print("Syntax error in line %d" % p.lineno)

@@ -15,7 +15,13 @@ reserved_words = (
     'alors',
     'pour',
     'pas',
-    'que')
+    'que',
+    'tableau',
+    'un',
+    'taille',
+    'La',
+    'la',
+    'case')
 
 tokens = (
             'NUMBER',
