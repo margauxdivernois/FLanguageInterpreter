@@ -118,7 +118,7 @@ def parse(program):
 
 precedence = (
     ('left', 'ADD_OP'),
-    ('left', 'MUL_OP'),
+    ('left', 'MUL_OP','SI','TANT','AFFICHE','PAR','DE','EST','OU','ALORS','POUR','PAS','QUE','TABLEAU','UN','TAILLE','CASE','NUMBER','ENDOFLINE','CROCHET_OPEN','CROCHET_CLOSE','AFFECTATION','VARIABLE','SUPERIEUR','INFERIEUR','EGAL','DIFFERENT','STRING','FOR','TO','LA','COMMENT',),
     ('right', 'UMINUS')
 )
 
