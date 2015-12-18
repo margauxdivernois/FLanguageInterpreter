@@ -48,10 +48,10 @@ def p_structure_si(p):
     p[0] = AST.SiNode([p[2], p[6]])
 
 def p_for(p):
-    """structure : FOR POUR VARIABLE DE NUMBER TO NUMBER PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
+    """structure : FOR POUR VARIABLE DE expression TO expression PAR PAS DE NUMBER CROCHET_OPEN programme CROCHET_CLOSE"""
     p[0] = AST.ForNode([p[3],
-                       AST.TokenNode(p[5]),
-                       AST.TokenNode(p[7]),
+                       p[5],
+                       p[7],
                        AST.TokenNode(p[11]),
                        p[13]]);
 

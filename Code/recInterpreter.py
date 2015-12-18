@@ -70,7 +70,7 @@ def execute(self):
 @addToClass(AST.ForNode)
 def execute(self):
     vars[self.children[0]] = self.children[1].tok
-    start = self.children[1].tok
+    start = self.children[1].execute()
     stop = self.children[2].execute()
     step = self.children[3].execute()
     for i in range(start, stop, step):
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     from parser5 import parse
 
     #fileName = sys.argv[1]
-    fileName = "Exemples/hellopanda.txt"
+    fileName = "Exemples/for.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 
