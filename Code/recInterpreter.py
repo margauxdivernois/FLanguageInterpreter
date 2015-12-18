@@ -113,7 +113,7 @@ if __name__ == "__main__":
     from parser5 import parse
 
     #fileName = sys.argv[1]
-    fileName = "test.txt"
+    fileName = "Exemples/for.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 

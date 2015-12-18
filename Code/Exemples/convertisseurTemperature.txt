@@ -1,0 +1,15 @@
+conversion vaut 1~
+temperature vaut 50~
+
+Si conversion est égal à 0 alors:
+[
+	resultat vaut temperature multiplié par 9 divisé par 5~
+	resultat vaut resultat plus 32
+]~
+
+Si conversion est égal à 1 alors:
+[
+	resultat vaut (temperature moins 32) multiplié par 5 divisé par 9
+]~
+
+Affiche resultat

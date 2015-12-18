@@ -29,14 +29,14 @@ def p_expression_bool(p):
     
 def p_expression_boolsimple(p):
     """expression_boolSimple : expression EST DIFFERENT DE expression
-                    | expression EST EGAL A expression
-                    | expression EST SUPERIEUR A expression
-                    | expression EST INFERIEUR A expression"""
+                    | expression EST EGAL TO expression
+                    | expression EST SUPERIEUR TO expression
+                    | expression EST INFERIEUR TO expression"""
     p[0] = AST.OpNode(p[3],[p[1],p[5]])
 
 def p_expression_boolcombined(p):
-    """expression_boolCombined : expression EST INFERIEUR OU EGAL A expression
-                    | expression EST SUPERIEUR OU EGAL A expression"""
+    """expression_boolCombined : expression EST INFERIEUR OU EGAL TO expression
+                    | expression EST SUPERIEUR OU EGAL TO expression"""
     p[0] = AST.OpNode(p[3]+p[5],[p[1],p[7]])
 
 def p_structure_while(p):

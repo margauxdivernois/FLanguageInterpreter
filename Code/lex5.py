@@ -10,7 +10,6 @@ reserved_words = (
     'par',
     'de',
     'est',
-    'a',
     'ou',
     'alors',
     'pour',
