@@ -1,4 +1,14 @@
-Répète pour i de 0 à 10 par pas de 5
+# ^Calcul de la puissance d'un nombre^~ 
+
+# ^Déclaration des variables^~
+x vaut 2~
+result vaut 1~
+startPuissance vaut 2~
+puissanceMax vaut 10~
+
+# ^Calcul des puissances avec une boucle for^~
+Répète pour i de startPuissance à puissanceMax par pas de 1
 [
-Affiche ^Bonjour^~
+Affiche result~
+result vaut result multiplié par x
 ]

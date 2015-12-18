@@ -1,7 +1,12 @@
+# ^a vaut 10^~
 a vaut 10~
+Affiche a~
+
+# ^Si a vaut 10, changer sa valeur par 5^~
 Si a est égal à 10 alors : 
 [
-a vaut 5~
-b vaut 10
+a vaut 5
 ]~
+
+# ^Affiche la valeur de a^~
 Affiche a
