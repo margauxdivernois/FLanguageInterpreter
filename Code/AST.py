@@ -160,6 +160,9 @@ class AffectTableNode(Node):
 
 class GetValueAtNode(Node):
     type = 'GET VALUE FROM TABLE AT'
+
+class CommentNode(Node):
+    type = 'COMMENT'
     
     
 def addToClass(cls):
