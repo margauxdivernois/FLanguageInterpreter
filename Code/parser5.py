@@ -60,8 +60,8 @@ def p_printExpression(p):
     p[0] = AST.PrintNode(p[2])
 
 def p_expression_case(p):
-    """ expression : LA CASE NUMBER DE VARIABLE"""
-    p[0] = AST.GetValueAtNode([AST.TokenNode(p[5]),AST.TokenNode(p[3])])
+    """ expression : LA CASE expression DE VARIABLE"""
+    p[0] = AST.GetValueAtNode([AST.TokenNode(p[5]), AST.TokenNode(p[3])])
 
 def p_expression_affectation(p):
     """affectation : VARIABLE AFFECTATION expression"""
@@ -100,8 +100,8 @@ def p_createTable(p):
     p[0] = AST.CreateTableNode([AST.TokenNode(p[1]),AST.TokenNode(p[7])])
 
 def p_affectTable(p):
-    """structure : LA CASE NUMBER DE VARIABLE AFFECTATION NUMBER"""
-    p[0] = AST.AffectTableNode([AST.TokenNode(p[5]),AST.TokenNode(p[3]),AST.TokenNode(p[7])])
+    """structure : LA CASE expression DE VARIABLE AFFECTATION expression"""
+    p[0] = AST.AffectTableNode([AST.TokenNode(p[5]), AST.TokenNode(p[3]), p[7]])
 
 def p_comment(p):
     """statement : COMMENT statement

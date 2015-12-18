@@ -1,0 +1,24 @@
+lignes est un tableau de taille 19~
+La case 0 de lignes vaut ^  .;;.^~
+La case 1 de lignes vaut ^         /;;;;\  ___      .;;.^~
+La case 2 de lignes vaut ^        |;(;;;-""   `'-.,;;;;;\^~
+La case 3 de lignes vaut ^         \;'            ';;;);/^~
+La case 4 de lignes vaut ^         /                \;;'^~
+La case 5 de lignes vaut ^        /    .;.   .;.     \^~
+La case 6 de lignes vaut ^        |   ;;o;; ;;o;;    |^~
+La case 7 de lignes vaut ^        ;   '"-'` `'-"'    |^~
+La case 8 de lignes vaut ^        /\      ._.       /^~
+La case 9 de lignes vaut ^      ;;;;;_   ,_Y_,   _.'^~
+La case 10 de lignes vaut ^     /;;;;;\`--.___.--;.^~
+La case 11 de lignes vaut ^    /|;;;;;;;.__.;;;.  \\^~
+La case 12 de lignes vaut ^   ;  \;;;;;;;;;;;;;;\  ;\__  .;.^~
+La case 13 de lignes vaut ^   |   ';;;;;;;;=;;;;'  |-__;;;;/^~
+La case 14 de lignes vaut ^   |     `""`  .---._  /;/;;\;;/^~
+La case 15 de lignes vaut ^  / ;         /;;;;;;;-;/;;/|;/^~
+La case 16 de lignes vaut ^  \_,\       |;;;;;;;;;;;;| |^~
+La case 17 de lignes vaut ^      '-...--';;;;;;;;;;;;\/^~
+La case 18 de lignes vaut ^  jgs           `"""`   `"`^~
+Répète pour i de 0 à 19 par pas de 1
+[
+    Affiche la case i de lignes
+]~
