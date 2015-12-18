@@ -127,7 +127,7 @@ if __name__ == "__main__":
     from parser5 import parse
 
     #fileName = sys.argv[1]
-    fileName = "Exemples/hello.txt"
+    fileName = "Exemples/hellopanda.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 
