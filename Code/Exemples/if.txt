@@ -1,5 +1,7 @@
+a vaut 10~
 Si a est égal à 10 alors : 
 [
 a vaut 5~
-b vaut 10~
-]
+b vaut 10
+]~
+Affiche a
