@@ -131,7 +131,8 @@ if __name__ == "__main__":
     from parser5 import parse
     import os
 
-    fileName = "Exemples/rapport_exemple3.txt"
+    fileName = sys.argv[1]
+    #fileName = "Exemples/tableau.txt"
     prog = open(fileName).read()
     ast = parse(prog)
 
