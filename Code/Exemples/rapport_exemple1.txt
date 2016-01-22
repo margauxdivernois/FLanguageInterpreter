@@ -1,0 +1,7 @@
+# ^Ceci est un exemple de commentaire^~
+exemple vaut 0~
+exemple vaut exemple plus 1~
+Si exemple est égal à 1 alors:
+[
+    Affiche ^exemple vaut 1^
+]~

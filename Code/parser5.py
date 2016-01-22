@@ -4,6 +4,7 @@
 import ply.yacc as yacc
 import AST
 from lex5 import tokens
+import os
 
 def p_programme_statement(p):
     """ programme : statement"""
@@ -122,6 +123,8 @@ precedence = (
     ('right', 'UMINUS')
 )
 
+if not os.path.exists('generated'):
+    os.makedirs('generated')
 yacc.yacc(outputdir='generated')
 
 if __name__ == "__main__":

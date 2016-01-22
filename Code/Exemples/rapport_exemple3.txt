@@ -1,0 +1,30 @@
+montab1 est un tableau de taille 10~
+montab2 est un tableau de taille 10~
+
+Répète pour i de 0 à 10 par pas de 1
+[
+	La case i de montab1 vaut i ~
+]~
+
+val vaut 10~
+
+Répète pour i de 0 à 10 par pas de 1
+[
+	val vaut val moins 1~
+	La case i de montab2 vaut val~
+]~
+
+Affiche ^Avant le swap : ^~
+Affiche montab1~
+Affiche montab2~
+
+Répète pour i de 0 à 10 par pas de 1
+[
+	val vaut la case i de montab1~
+	La case i de montab1 vaut la case i de montab2~
+	La case i de montab2 vaut val~
+]~
+
+Affiche ^Après le swap : ^~
+Affiche montab1~
+Affiche montab2~

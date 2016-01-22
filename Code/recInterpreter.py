@@ -129,9 +129,11 @@ def execute(self):
 if __name__ == "__main__":
 
     from parser5 import parse
+    import os
 
-    #fileName = sys.argv[1]
-    fileName = "Exemples/for.txt"
+    fileName = sys.argv[1]
+    #fileName = "Exemples/for.txt"
+
     prog = open(fileName).read()
     ast = parse(prog)
 
